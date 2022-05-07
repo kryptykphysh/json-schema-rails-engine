@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_05_225542) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "json_schema_keywords_generics", force: :cascade do |t|
+    t.string "generalisable_type", null: false
+    t.bigint "generalisable_id", null: false
+    t.string "title"
+    t.text "description"
+    t.string "default"
+    t.string "examples", array: true
+    t.boolean "read_only", default: false, null: false
+    t.boolean "write_only", default: false, null: false
+    t.boolean "deprecated", default: false, null: false
+    t.string "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["generalisable_type", "generalisable_id"], name: "idx_json_schema_keywords_generics_type_id_unique", unique: true
+  end
+
+  create_table "json_schema_primitives_strings", force: :cascade do |t|
+    t.integer "min_length"
+    t.integer "max_length"
+    t.string "pattern"
+    t.integer "format"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end

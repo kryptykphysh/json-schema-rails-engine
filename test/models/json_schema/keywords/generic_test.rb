@@ -24,12 +24,5 @@ require "test_helper"
 
 module JsonSchema
   class Keywords::GenericTest < ActiveSupport::TestCase
-    def setup
-      @generic = JsonSchema::Keywords::Generic.new
-    end
-
-    test "is not valid" do
-      assert_not @generic.valid?
-    end
   end
 end

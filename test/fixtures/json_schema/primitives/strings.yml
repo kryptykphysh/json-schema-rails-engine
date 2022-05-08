@@ -10,8 +10,3 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-no_specs:
-  min_length: 0
-
-with_generics:
-  min_length: 0

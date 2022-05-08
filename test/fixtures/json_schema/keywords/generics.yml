@@ -22,5 +22,3 @@
 #
 # empty
 
-string_generic:
-  generalisable: with_generics (JsonSchema::Primitives::String)

@@ -10,8 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_05_225542) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_08_112627) do
   # These are extensions that must be enabled in order to support this database
+  enable_extension "citext"
   enable_extension "plpgsql"
 
   create_table "json_schema_keywords_generics", force: :cascade do |t|
@@ -28,6 +29,28 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_05_225542) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["generalisable_type", "generalisable_id"], name: "idx_json_schema_keywords_generics_type_id_unique", unique: true
+  end
+
+  create_table "json_schema_primitives_arrays", force: :cascade do |t|
+    t.bigint "itemable_id", null: false
+    t.string "containable_type"
+    t.bigint "containable_id"
+    t.integer "minimum_contain_count"
+    t.integer "maximum_contain_count"
+    t.integer "minimum_item_count"
+    t.integer "maximum_item_count"
+    t.boolean "unique_items", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "root", default: false, null: false
+    t.index ["containable_type", "containable_id"], name: "index_json_schema_primitives_arrays_on_containable"
+    t.index ["itemable_id"], name: "index_json_schema_primitives_arrays_on_itemable_id"
+  end
+
+  create_table "json_schema_primitives_objects", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "root", default: false, null: false
   end
 
   create_table "json_schema_primitives_strings", force: :cascade do |t|

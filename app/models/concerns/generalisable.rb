@@ -7,8 +7,8 @@ module JsonSchema
     included do
       has_one :generic_fields,
         class_name: "JsonSchema::Keywords::Generic",
-        autosave: true,
         dependent: :destroy,
+        autosave: true,
         as: :generalisable
 
       JsonSchema::Keywords::Generic.attribute_names
@@ -19,9 +19,7 @@ module JsonSchema
           delegate (name + "?").to_sym, to: :generic_fields if %w[deprecated read_only write_only].include?(name)
         end
 
-      after_initialize { build_generic_fields }
-
-      after_save { generic_fields.save if generic_fields.changed? }
+      after_initialize { build_generic_fields if generic_fields.nil? }
     end
   end
 end

@@ -13,21 +13,21 @@
 require "test_helper"
 
 module JsonSchema
-  class Primitives::StringTest < ActiveSupport::TestCase
-    set_fixture_class "json_schema/primitives/string" => JsonSchema::Primitives::String
-    def setup
-      @string = json_schema_primitives_strings(:no_specs)
-    end
+  # class Primitives::StringTest < ActiveSupport::TestCase
+  #   set_fixture_class "json_schema/primitives/string" => JsonSchema::Primitives::String
+  #   def setup
+  #     @string = json_schema_primitives_strings(:no_specs)
+  #   end
 
-    test "is valid with all attributes set to nil" do
-      @string.min_length = nil
-      assert @string.valid?
-    end
+  #   test "is valid with all attributes set to nil" do
+  #     @string.min_length = nil
+  #     assert @string.valid?
+  #   end
 
-    test "has a :generic_fields association" do
-      assert_respond_to @string, :generic_fields
-    end
+  #   test "has a :generic_fields association" do
+  #     assert_respond_to @string, :generic_fields
+  #   end
 
-    it_behaves_like_a_generic
-  end
+  #   it_behaves_like_a_generic
+  # end
 end

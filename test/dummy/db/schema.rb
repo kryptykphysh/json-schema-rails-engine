@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_08_112627) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_08_223559) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
@@ -29,6 +29,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_112627) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["generalisable_type", "generalisable_id"], name: "idx_json_schema_keywords_generics_type_id_unique", unique: true
+  end
+
+  create_table "json_schema_keywords_properties", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "json_schema_primitives_object_id", null: false
+    t.string "typeable_type", null: false
+    t.bigint "typeable_id", null: false
+    t.boolean "required", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["json_schema_primitives_object_id", "name"], name: "index_property_name_for_object_unique", unique: true
+    t.index ["json_schema_primitives_object_id"], name: "index_object_properties"
+    t.index ["typeable_type", "typeable_id"], name: "index_properties_type"
   end
 
   create_table "json_schema_primitives_arrays", force: :cascade do |t|
@@ -62,4 +75,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_112627) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "json_schema_keywords_properties", "json_schema_primitives_objects", name: "fk_object_propeties"
 end

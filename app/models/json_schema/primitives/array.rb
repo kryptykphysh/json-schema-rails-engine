@@ -1,3 +1,5 @@
+require_relative "../../concerns/generalisable"
+
 # == Schema Information
 #
 # Table name: json_schema_primitives_arrays
@@ -22,7 +24,12 @@
 #
 module JsonSchema
   class Primitives::Array < ApplicationRecord
-    belongs_to :itemable
+    include Generalisable
+
+    belongs_to :itemable, polymorphic: true
     belongs_to :containable, polymorphic: true
+
+    scope :current, -> { joins(:generic_fields).where(generic_fields: {deprecated: false}) }
+    scope :root, -> { where(root: true) }
   end
 end

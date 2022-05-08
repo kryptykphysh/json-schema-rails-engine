@@ -10,17 +10,80 @@
 require "test_helper"
 
 module JsonSchema
-  class Primitives::NonRootObject < ActiveSupport::TestCase
-    def setup
-      @non_root = JsonSchema::Primitives::Object.new(root: false)
+  module Primitives
+    class NonRootObject < ActiveSupport::TestCase
+      def setup
+        @subject = Object.new(root: false)
+      end
     end
-  end
 
-  class NonRootTest < Primitives::NonRootObject
-    it_behaves_like_a_generic(@non_root)
+    class ObjectNonRootTest < Primitives::NonRootObject
+      include GenericFieldsBehaviour
 
-    test "generic_fields should not be nil" do
-      assert_not @non_root.generic_fields.nil?
+      it "is valid" do
+        assert @subject.valid?
+      end
+
+      it "returns false for :root?" do
+        assert_not @subject.root?
+      end
+
+      describe "when a non root Object exists with the same :title" do
+        before do
+          existing = Object.create!(root: false)
+          existing.title = "flume"
+          existing.save
+          @subject.title = "flume"
+        end
+
+        it "is still valid" do
+          assert @subject.valid?
+        end
+      end
+    end
+
+    class RootObject < ActiveSupport::TestCase
+      def setup
+        @subject = Object.new(root: true)
+      end
+    end
+
+    class ObjectRootTest < RootObject
+      include GenericFieldsBehaviour
+
+      it "is valid" do
+        assert @subject.valid?
+      end
+
+      it "returns true for :root?" do
+        assert @subject.root?
+      end
+
+      describe "when a non-root Object exists with the same :title" do
+        before do
+          existing = Object.create!(root: false)
+          existing.title = "flume"
+          existing.save
+          @subject.title = "flume"
+        end
+
+        it "is valid" do
+          assert @subject.valid?
+        end
+      end
+
+      describe "when a root Object exists with the same :title" do
+        before do
+          existing = Object.create!(root: true)
+          existing.title = "flume"
+          existing.save
+          @subject.title = "flume"
+        end
+
+        it "is valid" do
+          assert_not @subject.valid?
+        end
+      end
     end
   end
 end

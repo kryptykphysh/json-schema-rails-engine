@@ -10,3 +10,6 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+
+non_empty_string:
+  min_length: 1

@@ -20,4 +20,11 @@
 #
 #  idx_json_schema_keywords_generics_type_id_unique  (generalisable_type,generalisable_id) UNIQUE
 #
-# empty
+
+non_root_object_generic:
+  title: non-root object
+  generalisable: non_root (JsonSchema::Primitives::Object)
+
+root_object_generic:
+  title: root object
+  generalisable: root (JsonSchema::Primitives::Object)

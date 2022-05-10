@@ -1,0 +1,16 @@
+# == Schema Information
+#
+# Table name: json_schema_primitives_enums
+#
+#  id         :bigint           not null, primary key
+#  values     :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  values: MyString
+
+two:
+  values: MyString

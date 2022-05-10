@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_08_223559) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_10_190707) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
@@ -58,6 +58,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_223559) do
     t.boolean "root", default: false, null: false
     t.index ["containable_type", "containable_id"], name: "index_json_schema_primitives_arrays_on_containable"
     t.index ["itemable_id"], name: "index_json_schema_primitives_arrays_on_itemable_id"
+  end
+
+  create_table "json_schema_primitives_enums", force: :cascade do |t|
+    t.string "values"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "json_schema_primitives_objects", force: :cascade do |t|

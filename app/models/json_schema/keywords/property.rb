@@ -22,12 +22,10 @@
 #  fk_object_propeties  (json_schema_primitives_object_id => json_schema_primitives_objects.id)
 #
 
-require_relative "../../concerns/generalisable"
-
 module JsonSchema
   module Keywords
     class Property < ApplicationRecord
-      include Generalisable
+      include JsonSchema::Generalisable
 
       belongs_to :object,
         class_name: "JsonSchema::Primitives::Object",

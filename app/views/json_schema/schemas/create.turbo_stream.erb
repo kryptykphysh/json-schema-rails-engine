@@ -1,0 +1,9 @@
+<%= turbo_stream.update :new_schema do %>
+  <%= render @schema %>
+
+  <%= turbo_frame_tag dom_id(@type) do %>
+    <% if @type.is_a?(JsonSchema::Primitives::Object) %>
+      <%= render partial: "json_schema/primitives/objects/form", locals: { object: @type } %>
+    <% end %>
+  <% end %>
+<% end %>

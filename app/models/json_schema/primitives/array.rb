@@ -1,11 +1,10 @@
-require_relative "../../concerns/generalisable"
-
 # == Schema Information
 #
 # Table name: json_schema_primitives_arrays
 #
 #  id                    :bigint           not null, primary key
 #  containable_type      :string
+#  itemable_type         :string
 #  maximum_contain_count :integer
 #  maximum_item_count    :integer
 #  minimum_contain_count :integer
@@ -20,14 +19,15 @@ require_relative "../../concerns/generalisable"
 # Indexes
 #
 #  index_json_schema_primitives_arrays_on_containable  (containable_type,containable_id)
-#  index_json_schema_primitives_arrays_on_itemable_id  (itemable_id)
+#  index_primitives_arrays_itemable                    (itemable_type,itemable_id)
 #
+
 module JsonSchema
   class Primitives::Array < ApplicationRecord
-    include Generalisable
+    include JsonSchema::Generalisable
 
     belongs_to :itemable, polymorphic: true
-    belongs_to :containable, polymorphic: true
+    belongs_to :containable, polymorphic: true, optional: true
 
     scope :current, -> { joins(:generic_fields).where(generic_fields: {deprecated: false}) }
     scope :root, -> { where(root: true) }

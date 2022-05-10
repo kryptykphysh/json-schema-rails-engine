@@ -6,9 +6,11 @@
 #  values     :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#
+
 module JsonSchema
   class Primitives::Enum < ApplicationRecord
+    include JsonSchema::Generalisable
+
     serialize :values, Array
   end
 end

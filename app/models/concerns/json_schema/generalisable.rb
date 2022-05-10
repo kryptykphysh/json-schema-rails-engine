@@ -1,5 +1,3 @@
-require_relative "../json_schema/keywords/generic"
-
 module JsonSchema
   module Generalisable
     extend ActiveSupport::Concern

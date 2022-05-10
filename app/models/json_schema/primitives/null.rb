@@ -6,10 +6,9 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-require_relative "../../concerns/generalisable"
 
 module JsonSchema
   class Primitives::Null < ApplicationRecord
-    include Generalisable
+    include JsonSchema::Generalisable
   end
 end

@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: json_schema_schemas
+#
+#  id         :bigint           not null, primary key
+#  title      :citext
+#  type_type  :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  type_id    :bigint           not null
+#
+# Indexes
+#
+#  index_json_schema_schemas_on_title  (title) UNIQUE
+#  index_json_schema_schemas_on_type   (type_type,type_id)
+#
+
+one:
+  type: one
+  type_type: Type
+  title: 
+
+two:
+  type: two
+  type_type: Type
+  title: 

@@ -1,4 +1,7 @@
 module JsonSchema
-  class ApplicationController < ActionController::Base
+  class ApplicationController < ::ApplicationController
+    layout "application"
+
+    include Pagy::Backend
   end
 end

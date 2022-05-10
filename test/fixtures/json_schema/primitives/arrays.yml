@@ -4,6 +4,7 @@
 #
 #  id                    :bigint           not null, primary key
 #  containable_type      :string
+#  itemable_type         :string
 #  maximum_contain_count :integer
 #  maximum_item_count    :integer
 #  minimum_contain_count :integer
@@ -18,5 +19,5 @@
 # Indexes
 #
 #  index_json_schema_primitives_arrays_on_containable  (containable_type,containable_id)
-#  index_json_schema_primitives_arrays_on_itemable_id  (itemable_id)
+#  index_primitives_arrays_itemable                    (itemable_type,itemable_id)
 #

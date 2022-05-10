@@ -1,0 +1,5 @@
+<%= turbo_stream.update "schema_type" do %>
+  <%= render "form", object: @object %>
+
+  <%= link_to "Cancel", @object, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+<% end %>

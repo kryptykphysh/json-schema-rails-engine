@@ -1,0 +1,10 @@
+<div id="<%= dom_id(generic) %>">
+  <% %i[title description comment default examples deprecated read_only write_only].each do |field| %>
+    <div class="my-5">
+      <%= render "inline_edit", model: generic, attribute: field do %>
+        <span class="font-bold"><%= field.to_s.titleize %></span>
+        <%= generic.public_send field %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

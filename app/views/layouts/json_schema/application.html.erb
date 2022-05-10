@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Json schema</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-
-  <%= stylesheet_link_tag    "json_schema/application", media: "all" %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <%#
+        NOTE: make sure this name doesn't clash with anything in the main app.
+              think of it as 'require' and '$LOAD_PATH',
+              but instead it is 'stylesheet_link_tag' and 'manifest.js'.
+    %>
+    <%= stylesheet_link_tag "json_schema/json_schema_stylesheet", "data-turbo-track": "reload" %>
+  </head>
+  <body><%= yield %></body>
 </html>

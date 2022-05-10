@@ -1,0 +1,26 @@
+<div id="<%= dom_id(schema) %>">
+  <div class="my-5">
+    <%= render "inline_edit", model: schema, attribute: :title do %>
+      <span class="font-bold">Title</span>
+      <%= schema.title %>
+    <% end %>
+  </div>
+
+  <div class="mx-auto">
+    <h2 class="inline font-semibold text-2xl">Associated Type: <%= polymorphic_class_name(schema.type).titleize %></h2>
+  </div>
+
+  <hr class="mt-6">
+
+  <div class="mx-auto">
+    <h2 class="font-semibold text-2xl">Generic Fields:</h2>
+    <%= render schema.type.generic_fields %>
+  </div>
+
+  <hr class="mt-6">
+
+  <div class="mx-auto">
+    <h2 class="font-semibold text-2xl">Type Fields:</h2>
+    <%= render schema.type %>
+  </div>
+</div>

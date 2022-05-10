@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_10_192121) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_13_202757) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
@@ -56,8 +56,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_10_192121) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "root", default: false, null: false
+    t.string "itemable_type"
     t.index ["containable_type", "containable_id"], name: "index_json_schema_primitives_arrays_on_containable"
-    t.index ["itemable_id"], name: "index_json_schema_primitives_arrays_on_itemable_id"
+    t.index ["itemable_type", "itemable_id"], name: "index_primitives_arrays_itemable"
   end
 
   create_table "json_schema_primitives_booleans", force: :cascade do |t|
@@ -99,6 +100,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_10_192121) do
     t.integer "format"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "json_schema_schemas", force: :cascade do |t|
+    t.string "type_type", null: false
+    t.bigint "type_id", null: false
+    t.citext "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_json_schema_schemas_on_title", unique: true
+    t.index ["type_type", "type_id"], name: "index_json_schema_schemas_on_type"
   end
 
   add_foreign_key "json_schema_keywords_properties", "json_schema_primitives_objects", name: "fk_object_propeties"

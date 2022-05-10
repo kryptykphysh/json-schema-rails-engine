@@ -1,5 +1,3 @@
-require_relative "../../concerns/generalisable"
-
 # == Schema Information
 #
 # Table name: json_schema_primitives_strings

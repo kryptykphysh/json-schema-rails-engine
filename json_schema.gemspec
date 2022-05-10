@@ -20,12 +20,16 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails", ">= 7.0.2.4"
 
-  spec.add_development_dependency "annotate", "~> 3.2"
   spec.add_development_dependency "faker", "~> 2.20"
   spec.add_development_dependency "guard", "~> 2.18"
+  spec.add_development_dependency "guard-minitest", "~> 2.4"
   spec.add_development_dependency "minitest", "~> 5.15"
   spec.add_development_dependency "minitest-reporters", "~> 1.5"
-  spec.add_development_dependency "guard-minitest", "~> 2.4"
   spec.add_development_dependency "simplecov", "~> 0.21"
   spec.add_development_dependency "standard", "~> 1.11"
+
+  spec.add_runtime_dependency "annotate", "~> 3.2"
+  spec.add_runtime_dependency "pagy", "~> 5.10"
+  spec.add_runtime_dependency "heroicon", "~> 0.4"
+  spec.add_runtime_dependency "tailwindcss-rails", "~> 2.0"
 end

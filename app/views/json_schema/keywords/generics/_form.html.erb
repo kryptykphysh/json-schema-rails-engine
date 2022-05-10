@@ -1,0 +1,40 @@
+<%= form_with(model: generic, class: "contents") do |form| %>
+  <% if generic.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(generic.errors.count, "error") %> prohibited this generic from being saved:</h2>
+
+      <ul>
+        <% generic.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% %i[title description comment].each do |field| %>
+    <div class="my-5">
+      <%= render "inline_fields", form: form, attribute: field do %>
+        <%= form.label field, class: "font-bold" %>
+        <%= form.text_field field, class: "inline shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2" %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% %i[default examples].each do |field| %>
+    <div class="my-5">
+      <%= render "inline_fields", form: form, attribute: field do %>
+        <%= form.label field, style: "display: block" %>
+        <%= form.text_field field, class: "block mt-2 h-5 w-5" %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% %i[deprecated read_only write_only].each do |field| %>
+    <div class="my-5">
+      <%= render "inline_fields", form: form, attribute: field do %>
+        <%= form.label field, style: "display: block" %>
+        <%= form.check_box field, class: "block mt-2 h-5 w-5" %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

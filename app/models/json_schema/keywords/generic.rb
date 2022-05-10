@@ -20,6 +20,7 @@
 #
 #  idx_json_schema_keywords_generics_type_id_unique  (generalisable_type,generalisable_id) UNIQUE
 #
+
 module JsonSchema
   class Keywords::Generic < ApplicationRecord
     belongs_to :generalisable, polymorphic: true

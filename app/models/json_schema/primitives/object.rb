@@ -8,16 +8,15 @@
 #  updated_at :datetime         not null
 #
 
-require_relative "../../concerns/generalisable"
-
 module JsonSchema
   module Primitives
     class Object < ApplicationRecord
-      include Generalisable
+      include JsonSchema::Generalisable
 
       has_many :properties,
         class_name: "JsonSchema::Keywords::Property",
-        foreign_key: "json_schema_primitives_object_id"
+        foreign_key: "json_schema_primitives_object_id",
+        autosave: true
 
       validate :unique_root_title
 

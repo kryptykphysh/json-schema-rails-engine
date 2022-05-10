@@ -1,0 +1,66 @@
+<div id="<%= dom_id array %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Type:</strong> array
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Title:</strong>
+    <%= array.title %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Items Type:</strong>
+    <%= array.containable_type.demodularize.titleize %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Maximum Item Count:</strong>
+    <%= array.maximum_item_count %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Minimum Item Count:</strong>
+    <%= array.minimum_item_count %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Maximum Contains Item Count:</strong>
+    <%= array.maximum_contain_count %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Minimum Contains Item Count:</strong>
+    <%= array.minimum_contain_count %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Root:</strong>
+    <%= array.root %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Unique Items:</strong>
+    <%= array.unique_items %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Flume at:</strong>
+    <%= array.flume_at %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Flume on:</strong>
+    <%= array.flume_on %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Json stuff:</strong>
+    <%= array.json_stuff %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this array", array, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this array', edit_array_path(array), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

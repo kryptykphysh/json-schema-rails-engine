@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 module JsonSchema
   module Primitives
@@ -10,7 +10,7 @@ module JsonSchema
     end
 
     class RootSchemasTest < ClassMethods
-      it 'returns only Objects and Arrays' do
+      it "returns only Objects and Arrays" do
         permitted_classes = %w[JsonSchema::Primitives::Object JsonSchema::Primitives::Array]
         actual = @schemas.all? do |schema|
           permitted_classes.include? schema.class.name
@@ -18,11 +18,11 @@ module JsonSchema
         assert actual
       end
 
-      it 'returns only instances with root? == true' do
+      it "returns only instances with root? == true" do
         assert @schemas.all?(&:root?)
       end
 
-      it 'returns only instances with deprecated? == false' do
+      it "returns only instances with deprecated? == false" do
         assert @schemas.all? { |schema| schema.deprecated? == false }
       end
     end

@@ -21,7 +21,7 @@
 #
 #  fk_object_propeties  (json_schema_primitives_object_id => json_schema_primitives_objects.id)
 #
-require 'test_helper'
+require "test_helper"
 
 module JsonSchema
   module Keywords
@@ -34,7 +34,7 @@ module JsonSchema
     class UnsavedPropertyTest < UnsavedProperty
       include GenericFieldsBehaviour
 
-      it 'is valid' do
+      it "is valid" do
         assert @subject.valid?
       end
     end

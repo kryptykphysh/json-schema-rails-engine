@@ -22,7 +22,7 @@
 #  fk_object_propeties  (json_schema_primitives_object_id => json_schema_primitives_objects.id)
 #
 
-require_relative '../../concerns/generalisable'
+require_relative "../../concerns/generalisable"
 
 module JsonSchema
   module Keywords
@@ -30,8 +30,8 @@ module JsonSchema
       include Generalisable
 
       belongs_to :object,
-                 class_name: 'JsonSchema::Primitives::Object',
-                 foreign_key: :json_schema_primitives_object_id
+        class_name: "JsonSchema::Primitives::Object",
+        foreign_key: :json_schema_primitives_object_id
       belongs_to :typeable, polymorphic: true
     end
   end

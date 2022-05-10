@@ -5,12 +5,12 @@ class CreateJsonSchemaKeywordsProperties < ActiveRecord::Migration[7.0]
         null: false
       t.references :json_schema_primitives_object,
         null: false,
-        foreign_key: { name: "fk_object_propeties" },
-        index: { name: "index_object_properties" }
+        foreign_key: {name: "fk_object_propeties"},
+        index: {name: "index_object_properties"}
       t.references :typeable,
         polymorphic: true,
         null: false,
-        index: { name: "index_properties_type" }
+        index: {name: "index_properties_type"}
       t.boolean :required, null: false, default: false
 
       t.timestamps
